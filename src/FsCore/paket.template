@@ -5,3 +5,8 @@ language F#
 tags fsharp
 repositoryType git
 repositoryUrl https://github.com/fc1943s/FsCore
+include-pdbs true
+include-referenced-projects true
+files
+    *.fsproj ==> fable
+    src/*.fs ==> fable/src
