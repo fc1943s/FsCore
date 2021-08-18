@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>preview</LangVersion>
+        <PackageId>FsCore</PackageId>
+        <Authors>fc1943s</Authors>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/fc1943s/FsCore</RepositoryUrl>
+        <Description>Minimal JavaScript compatible F# utilities</Description>
+        <Version>0.0.1-alpha.1</Version>
+        <PackageTags>fsharp</PackageTags>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="src\Core.fs"/>
+        <Compile Include="src\BaseModel.fs"/>
+        <Content Include="paket.references"/>
+        <Content Include="pack.ps1">
+            <Pack>false</Pack>
+        </Content>
+    </ItemGroup>
+    <Import Project="..\..\.paket\Paket.Restore.targets"/>
+</Project>
