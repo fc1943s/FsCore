@@ -8,17 +8,18 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/fc1943s/FsCore</RepositoryUrl>
         <Description>Minimal JavaScript compatible F# utilities</Description>
-        <Version>0.0.1-alpha.1</Version>
+        <Version>0.0.1-alpha.2</Version>
         <PackageTags>fsharp</PackageTags>
         <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     </PropertyGroup>
     <ItemGroup>
-        <Compile Include="src\Core.fs"/>
-        <Compile Include="src\BaseModel.fs"/>
-        <Content Include="paket.references"/>
+        <Compile Include="src\Core.fs" />
+        <Compile Include="src\BaseModel.fs" />
         <Content Include="pack.ps1">
             <Pack>false</Pack>
         </Content>
+        <Content Include="paket.references" />
+        <Content Include="paket.template" />
     </ItemGroup>
-    <Import Project="..\..\.paket\Paket.Restore.targets"/>
+    <Import Project="..\..\.paket\Paket.Restore.targets" />
 </Project>
