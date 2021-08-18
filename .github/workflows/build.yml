@@ -15,7 +15,6 @@ jobs:
         with:
           dotnet-version: 6.0.x
           include-prerelease: true
-          shell: pwsh
 
       - shell: pwsh
         run: cd src/FsCore; ./pack.ps1
