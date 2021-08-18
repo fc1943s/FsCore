@@ -1,1 +1,7 @@
 type project
+authors fc1943s
+description Minimal JavaScript compatible F# utilities
+language F#
+tags fsharp
+repositoryType git
+repositoryUrl https://github.com/fc1943s/FsCore
