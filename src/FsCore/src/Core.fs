@@ -23,7 +23,7 @@ module Enum =
     let inline name<'T> (value: 'T) = Enum.GetName (typeof<'T>, value)
 
     let inline formatIfEnum<'T> (value: 'T) =
-        if typeof<'T>.IsEnum then value |> Enum.name |> unbox else value
+        if typeof<'T>.IsEnum then value |> name |> unbox else value
 
 
 module Function =
