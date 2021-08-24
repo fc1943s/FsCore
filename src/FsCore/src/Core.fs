@@ -22,6 +22,9 @@ module Enum =
 
     let inline name<'T> (value: 'T) = Enum.GetName (typeof<'T>, value)
 
+    let inline formatIfEnum<'T> (value: 'T) =
+        if typeof<'T>.IsEnum then value |> Enum.name |> unbox else value
+
 
 module Function =
     let inline memoizeLazy fn =
@@ -79,7 +82,7 @@ module Map =
 
 
 module Object =
-    let inline compare a b = (unbox a) = (unbox b)
+    let inline compare<'T> (a: 'T) (b: 'T) = (unbox a) = (unbox b)
 
     let inline newDisposable fn =
         { new IDisposable with
@@ -90,7 +93,7 @@ module Object =
 module Option =
     let inline ofObjUnbox<'T> (value: 'T) =
         Option.ofObj (unbox value)
-        |> Option.map (fun x -> box x :?> 'T)
+        |> Option.map (fun _ -> value)
 
 
 module Reflection =
