@@ -24,6 +24,7 @@ module Enum =
 
     let inline formatIfEnum<'T> (value: 'T) =
         if typeof<'T>.IsEnum then value |> name |> unbox else value
+        |> string
 
 
 module Function =
