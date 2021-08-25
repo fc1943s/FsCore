@@ -22,10 +22,6 @@ module Enum =
 
     let inline name<'T> (value: 'T) = Enum.GetName (typeof<'T>, value)
 
-    let inline formatIfEnum<'T> (value: 'T) =
-        if typeof<'T>.IsEnum then value |> name |> unbox else value
-        |> string
-
 
 module Function =
     let inline memoizeLazy fn =
@@ -92,8 +88,17 @@ module Object =
 
 
 module Option =
+    let inline ofObjUnboxFn<'T> (getValue: unit -> 'T) =
+        getValue ()
+        |> unbox
+        |> Option.ofObj
+        |> Option.map (fun _ -> getValue ())
+
     let inline ofObjUnbox<'T> (value: 'T) =
-        Option.ofObj (unbox value)
+        // ofObjUnboxFn (fun () -> value)
+        value
+        |> unbox
+        |> Option.ofObj
         |> Option.map (fun _ -> value)
 
 
