@@ -8,6 +8,8 @@ open Microsoft.FSharp.Reflection
 module CoreMagic =
     type TicksGuid = Guid
 
+    let inline getLocals () = ""
+
 
 module DateTime =
     let inline ticksDiff ticks =
