@@ -1,6 +1,7 @@
 namespace FsCore
 
 open System
+open System.Collections.Generic
 open Microsoft.FSharp.Reflection
 
 
@@ -78,6 +79,11 @@ module Map =
         |> Map.ofSeq
 
     let inline mapValues f (x: Map<'Key, 'T>) = Map.map (fun _ -> f) x
+
+    let inline tryFindDictionary key (map: Dictionary<_, _>) =
+        match map.TryGetValue key with
+        | true, value -> Some value
+        | _ -> None
 
 
 module Object =
