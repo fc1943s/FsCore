@@ -33,11 +33,16 @@ module Function =
 
 
 module Guid =
-    let newTicksGuid () =
-        let ticks = string DateTime.Now.Ticks
-        let guid = Guid.NewGuid () |> string
+    let inline ticksFromGuid (ticksGuid: TicksGuid) =
+        let ticks = string ticksGuid
+        int64 $"{ticks.[0..7]}{ticks.[9..12]}{ticks.[14..17]}{ticks.[19..20]}"
 
-        TicksGuid $"{ticks.[0..7]}-{ticks.[8..11]}-{ticks.[12..15]}-{guid.[19..]}"
+    let inline newGuidFromTicks (ticks: int64) =
+        let guid = Guid.NewGuid () |> string
+        let ticks = string ticks
+        TicksGuid $"{ticks.[0..7]}-{ticks.[8..11]}-{ticks.[12..15]}-{ticks.[16..17]}{guid.[21..]}"
+
+    let inline newTicksGuid () = newGuidFromTicks DateTime.Now.Ticks
 
     let inline (|Valid|Invalid|) (str: string) =
         match Guid.TryParse str with
