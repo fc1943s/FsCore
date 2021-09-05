@@ -39,6 +39,11 @@ module Guid =
 
         TicksGuid $"{ticks.[0..7]}-{ticks.[8..11]}-{ticks.[12..15]}-{guid.[19..]}"
 
+    let inline (|Valid|Invalid|) (str: string) =
+        match Guid.TryParse str with
+        | true, guid -> Valid guid
+        | _ -> Invalid
+
 
 module ListIter =
     let inline length (target: ^X when ^X: (member length : int)) = (^X: (member length : int) target)
